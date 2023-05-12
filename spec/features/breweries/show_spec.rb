@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "/breweries/:id" do
+  # User Story 2
   describe 'as a visitor, when  I visit the brewery show page' do
     before :each do
       @omf = Brewery.create!(name: "OMF", draft_lines: 8, serves_food: false)
