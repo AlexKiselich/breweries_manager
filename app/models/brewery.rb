@@ -5,4 +5,8 @@ class Brewery < ApplicationRecord
     order(created_at: :desc)
   end
 
+  def count
+    beers.count
+  end
+
 end
