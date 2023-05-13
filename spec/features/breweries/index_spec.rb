@@ -5,14 +5,25 @@ RSpec.describe "/breweries (Brewery Index page)", type: :feature do
   describe "as a visitor, when I visit the brewery index page" do
     before :each do
       @omf = Brewery.create!(name: "OMF", draft_lines: 8, serves_food: false)
-      @ratio = Brewery.create!(name: "Ration", draft_lines: 10, serves_food: false)
+      @ratio = Brewery.create!(name: "Ratio", draft_lines: 10, serves_food: false)
     end
+
     it 'displays the name of each Brewery' do
       
       visit "/breweries"
-      save_and_open_page
+
       expect(page).to have_content(@omf.name)
       expect(page).to have_content(@ratio.name)
+    end
+    it 'displays the breweries names ordered by most recently created first and see when it was created at' do
+
+      visit "/breweries"
+
+      expect(page).to have_content(@omf.name)
+      expect(page).to have_content("Created at: #{@omf.created_at}")
+      expect(page).to have_content(@ratio.name)
+      expect(page).to have_content("Created at: #{@ratio.created_at}")
+      expect(@ratio.name).to appear_before(@omf.name)
     end
   end
 end
