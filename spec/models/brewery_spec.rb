@@ -4,4 +4,11 @@ RSpec.describe Brewery, type: :model do
   describe "relationships" do
     it { should have_many :beers }
   end
-end
+
+#   #User Story 5
+#   describe "instance methods" do
+#     it '#' do
+     
+#     end
+#   end
+# end
