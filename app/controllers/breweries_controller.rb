@@ -1,6 +1,6 @@
 class BreweriesController < ApplicationController
   def index
-    @breweries = Brewery.all
+    @breweries = Brewery.sort_by_most_recent
   end
 
   def show
