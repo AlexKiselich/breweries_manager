@@ -1,0 +1,12 @@
+<%= form_with url: "/breweries", method: :post, local: :true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :serves_food %>
+  <%= form.radio_button :serves_food, true %>
+  <%= form.label :serves_food_true, "true" %>
+  <%= form.radio_button :serves_food, false %>
+  <%= form.label :serves_food_false, "false" %><br>
+  <%= form.label :draft_lines %>
+  <%= form.number_field :draft_lines, in: 1..20, step: 1%><br>
+  <%= form.submit "Create Brewery" %>
+<% end %>

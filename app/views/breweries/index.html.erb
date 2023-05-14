@@ -1,5 +1,8 @@
 <h1>Breweries</h1>
 <% @breweries.each do |brewery| %>
-<p><%= brewery.name %></p>
+<h2><%= brewery.name %></h2>
+<p>Number of Draft Lines: <%= brewery.draft_lines %></p>
 <p>Created at: <%= brewery.created_at %></p>
 <% end %>
+
+<h3><%= link_to "Create Brewery", "/breweries/new" %></h3>
