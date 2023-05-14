@@ -22,10 +22,27 @@ RSpec.describe "/breweries/:id" do
     it 'displays the count of beers in each brewery' do
       visit "/breweries/#{@omf.id}"
 
-      save_and_open_page
-
       expect(page).to have_content("Beer Count: 2")
       
+    end
+
+    it 'will display a link to breweries index and takes me there' do
+      visit "/breweries/#{@omf.id}"
+
+      expect(page).to have_link("Breweries", href: "/breweries")
+
+      click_link "Breweries"
+
+      expect(current_path).to eq("/breweries")
+    end
+
+    it "display a link to take me to '/brewery/:id/beers" do
+      visit "/breweries/#{@omf.id}"
+      save_and_open_page
+      expect(page).to have_link("OMF", href: "/breweries/#{@omf.id}/beers")
+      click_link "OMF"
+
+      expect(current_path).to eq("/breweries/#{@omf.id}/beers")
     end
   end
 end

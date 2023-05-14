@@ -10,12 +10,21 @@ RSpec.describe "/beers/:id" do
     it 'can display the beer name and attributes' do
       visit "/beers/#{@inner_light.id}"
 
-      save_and_open_page
       expect(page).to have_content(@inner_light.name)
       expect(page).to have_content(@inner_light.abv)
       expect(page).to have_content(@inner_light.beer_type)
       expect(page).to have_content(@inner_light.on_draft)
       expect(page).to have_content(@inner_light.untapped_rating)
+    end
+
+    it 'has a link to the beers index and take me there' do
+      visit "/beers/#{@inner_light.id}"
+
+      expect(page).to have_link("Beers", href: "/beers") 
+      
+      click_link "Beers"
+
+      expect(current_path).to eq("/beers")
     end
   end
 end

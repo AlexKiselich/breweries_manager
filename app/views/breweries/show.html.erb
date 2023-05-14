@@ -1,4 +1,6 @@
-<h1><%= @brewery.name %></h1>
+<h1><%= link_to "Breweries", "/breweries" %></h1>
+
+<h2><%= link_to @brewery.name, "/breweries/#{@brewery.id}/beers" %></h2>
 <p>Number of Draft Lines: <%= @brewery.draft_lines %></p>
 <p>Does it serve food: <%= @brewery.serves_food %></p>
 <p>Beer Count: <%= @brewery.count %></p>
