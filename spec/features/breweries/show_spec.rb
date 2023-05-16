@@ -48,5 +48,15 @@ RSpec.describe "/breweries/:id" do
 
       expect(current_path).to eq("/breweries/#{@omf.id}/edit")
     end
+    it 'Displays a link to delete the Brewery' do
+      visit "/breweries/#{@omf.id}"
+
+      expect(page).to have_button("Delete #{@omf.name}")
+
+      click_button "Delete #{@omf.name}"
+
+      expect(current_path).to eq("/breweries")
+      expect(page).to_not have_content("#{@omf.name}")
+    end
   end
 end
