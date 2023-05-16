@@ -1,7 +1,7 @@
 class Breweries::BeersController < ApplicationController
   def index 
     @brewery = Brewery.find(params[:id])
-    @beers = @brewery.beers
+    @beers = @brewery.sort_by(params)
   end
 
   def new
