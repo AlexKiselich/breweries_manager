@@ -9,4 +9,16 @@ class Brewery < ApplicationRecord
     beers.size
   end
 
+  def sort_alphabetically
+    beers.order(:name)
+  end
+
+  def sort_by(params)
+    if params[:sort] == 'abc'
+      sort_alphabetically
+    else
+      beers.order(created_at: :desc)
+    end
+  end
+  
 end
