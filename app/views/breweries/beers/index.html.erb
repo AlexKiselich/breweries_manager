@@ -7,7 +7,17 @@
 <ul>ABV: <%= beer.abv %></ul>
 <ul>On Draft: <%= beer.on_draft %></ul>
 <ul>Untapped Rating: <%= beer.untapped_rating %></ul>
+<ul><%= link_to "Edit #{beer.name}", "/beers/#{beer.id}/edit" %></ul>
+<ul><%= button_to "Delete #{beer.name}", "/beers/#{beer.id}", method: :delete %></ul>
+
 <% end %>
-<h2><%= link_to "Create #{@brewery.name} Beer", "/breweries/#{@brewery.id}/beers/new" %>
+<h4><%= link_to "Sort Beers Alphabetically", "/breweries/#{@brewery.id}/beers?sort=abc" %></h4>
+<h4><%= link_to "Create #{@brewery.name} Beer", "/breweries/#{@brewery.id}/beers/new" %></h4>
+
+<%= form_with url: "/breweries/#{@brewery.id}/beers", local: true do |form| %>
+<%= form.label :number %>
+<%= form.text_field :number %>
+<%= form.submit "Return Beers with Untapped Rating above" %>
+<% end %>
 
 

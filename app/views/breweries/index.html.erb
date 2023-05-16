@@ -4,6 +4,7 @@
 <p>Number of Draft Lines: <%= brewery.draft_lines %></p>
 <p>Created at: <%= brewery.created_at %></p>
 <p><%= link_to "Edit #{brewery.name}", "/breweries/#{brewery.id}/edit", method: :get %>
+<p><%= button_to "Delete #{brewery.name}", "/breweries/#{brewery.id}", method: :delete %>
 <% end %>
 
 <h3><%= link_to "Create Brewery", "/breweries/new" %></h3>
