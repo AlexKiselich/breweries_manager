@@ -1,8 +1,9 @@
 <h1>Breweries</h1>
 <% @breweries.each do |brewery| %>
-<h2><%= brewery.name %></h2>
+<h2><%= link_to "#{brewery.name}", "breweries/#{brewery.id}" %></h2>
 <p>Number of Draft Lines: <%= brewery.draft_lines %></p>
 <p>Created at: <%= brewery.created_at %></p>
+<p><%= link_to "Edit #{brewery.name}", "/breweries/#{brewery.id}/edit", method: :get %>
 <% end %>
 
 <h3><%= link_to "Create Brewery", "/breweries/new" %></h3>

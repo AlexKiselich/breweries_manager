@@ -11,14 +11,26 @@ class BreweriesController < ApplicationController
   end
 
   def create
-    brewery = Brewery.new({
-      name: params[:name],
-      draft_lines: params[:draft_lines],
-      serves_food: params[:serves_food]
-    })
-    brewery.save
+    Brewery.create(brewery_params)
     redirect_to "/breweries"
   end
+
+  def edit
+    @brewery = Brewery.find(params[:id])
+  end
+
+  def update
+    brewery = Brewery.find(params[:id])
+    brewery.update(brewery_params)
+    redirect_to "/breweries/#{brewery.id}"
+  end
+
+private
+
+  def brewery_params
+    params.permit(:name, :serves_food, :draft_lines)
+  end
+
 
 
 

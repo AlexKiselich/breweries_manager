@@ -1,0 +1,16 @@
+<%= form_with url: "/breweries/#{@brewery.id}/beers", method: :post, local: :true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :beer_type %>
+  <%= form.text_field :beer_type %><br>
+  <%= form.label :abv %>
+  <%= form.number_field :abv, in: 0.0..20.0, step: 0.1%><br>
+  <%= form.label :on_draft %><br>
+  <%= form.radio_button :on_draft, true %>
+  <%= form.label :on_draft_true, "true" %><br>
+  <%= form.radio_button :on_draft, false %>
+  <%= form.label :on_draft_true, "false" %><br>
+  <%= form.label :untapped_rating %>
+  <%= form.number_field :untapped_rating, in: 1..5, step: 1 %><br>
+  <%= form.submit "Create #{@brewery.name} Beer" %>
+<% end %>

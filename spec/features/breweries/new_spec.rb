@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "/breweries/new" do
+  # User Story 11
   describe "When I visit '/breweries/new"
   it 'allows me to fill out the form to create a new brewery' do
     visit "/breweries/new"
@@ -15,8 +16,6 @@ RSpec.describe "/breweries/new" do
     fill_in("Name", with: "Denver Beer Company")
     choose("false")
     fill_in("Draft lines", with: "18")
-    save_and_open_page
-    
     click_on("Create Brewery")
     
     expect(current_path).to eq("/breweries")
