@@ -21,7 +21,6 @@ RSpec.describe "/beers/:id" do
       visit "/beers/#{@inner_light.id}"
 
       expect(page).to have_link("Beers", href: "/beers") 
-      
       click_link "Beers"
 
       expect(current_path).to eq("/beers")

@@ -6,7 +6,7 @@ class Brewery < ApplicationRecord
   end
 
   def count
-    beers.count
+    beers.size
   end
 
 end
