@@ -11,8 +11,6 @@ RSpec.describe '/beers' do
     it 'displays the Beers and their attributes' do
       visit '/beers'
 
-      save_and_open_page
-
       expect(page).to have_content(@inner_light.name)
       expect(page).to have_content(@inner_light.beer_type)
       expect(page).to have_content(@inner_light.abv)
