@@ -32,10 +32,20 @@ RSpec.describe "/breweries (Brewery Index page)", type: :feature do
     end
     it 'displays a link to edit the Brewery' do
       visit "/breweries"
-      save_and_open_page
+      
       click_link "Edit #{@omf.name}"
 
       expect(current_path).to eq("/breweries/#{@omf.id}/edit")
+    end
+    it 'I see a button to delete each brewery and can click it and not see that brewery anymore' do
+      visit "/breweries"
+      
+      expect(page).to have_button("Delete #{@ratio.name}")
+      expect(page).to have_content("#{@ratio.name}")
+
+      click_button "Delete #{@ratio.name}"
+
+      expect(page).to_not have_content("#{@ratio.name}")
     end
   end
 end
